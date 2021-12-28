@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>RadixSort</title>
+    <link href="estilosg.css" rel="stylesheet" type="text/css">
+    <link rel="icon" href="favicon.png">
+</head>
+<body>
+    <header>
+        <img src="logo0.png" alt="creative.logo" class="logo">
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <!--li><a href="">Contacto</a></li-->
+            </ul>
+        </nav>
+    </header>
+
+    <section class="home-hero-algoritmo">
+        <div class="container">
+            <h1 class="title">Algoritmo</h1>
+        </div>
+    </section>
+
+    <div class="info">
+          <div class="info-wrapper">
+            
+            <p>Radix sort es un algoritmo de ordenamiento que ordena enteros procesando sus dígitos de forma individual. Asimismo, es un algoritmo no comparativo y, normalmente, se usa el método LSD radix sort, por lo que para este método se sigue el sigueinte algoritmo: </p>
+            <ul>
+                <li><strong>Encontrar el max: </strong> Para comenzar, se debe partir de un arreglo donde buscamos el elemento con el mayor número de dígitos. </li>
+                <li><strong>Crear una variable índice: </strong> Para trabajar con cada uno de los dígitos individuales de un número, se usa una variable índice que comienza en 1 y se va multiplican por 10.</li>
+                <li><strong>Arreglo de índices: </strong> Mediante un ciclo for que empieza en 1 y se va multiplicando por 10, se llama al método counting sort, al que se le pasan los parámetros: arreglo, tamaño del arreglo y el índice, que inicia en 1. </li>
+                <li><strong>Counting sort: </strong> Se usa el método counting sort para ordenar los números en base al dígito menos significativo. </li>
+                <li><strong>Ciclo: </strong> Se continúa el ciclo hasta que el número de dígitos del número con más dígitos es alcanzado. </li>
+                <li><strong>Fin de algoritmo: </strong> En el arreglo original quedan los elementos ordenados de forma ascendente. </li>
+            </ul>   
+            <p>      </p>            
+            
+            <div class="portada-image-wrapper">
+                <img src="lsdradix.jpg" alt="">
+            </div>
+
+            <h2><strong>Ejemplo</strong></h2>
+            <div class="portada-image-wrapper">
+                <img src="ejemplo1.png" alt="">
+            </div>
+            <p>Para ilustrar, el algortimo de radix sort, se muestra el siguiente arreglo a ordenar mediante el método de lsd radix sort, el cual
+                tiene 10 elementos desordenados.  </p>
+            <div class="portada-image-wrapper">
+                <img src="ejemplo2.png" alt="">
+            </div>
+            <p>Para comenzar con el ejemplo, se crea un arreglo auxiliar de 10 elementros con el que se estará trabajando.  </p>
+            <div class="portada-image-wrapper">
+                <img src="ejemplo3.png" alt="">
+            </div>
+            <p>Ahora volvemos al arreglo original y, como es lsd radix sort, se comienza por el último dígito, que es el que esta en negritas. 
+                Esto significa que, por el momento, nos podemos olvidar de los otros números, con se muestra en el arreglo de abajo. </p>
+            <div class="portada-image-wrapper">
+                <img src="ejemplo4.png" alt="">
+            </div>
+            <p>Después de realizar ese proceso meadinte un módulo de 10, a estos dígitos se les aplica el método de counting sort, entonces 
+                se cuentan los elementos que hay de cada números y se almacenan en su lugar correspondiente. </p>
+            <div class="portada-image-wrapper">
+                <img src="ejemplo5.png" alt="">
+            </div>
+            <p>A partir de estos datos, se vuelve a acomodar el arreglo en base al dígito menos significativo como se muestra el primer arreglo.
+                Sin embargo, el algortimo no termina ahí, por lo que nos pasamos al siguiente dígito que se muestra en neritras en el segundo 
+            arreglo. De la misma manera, partimos de la suposición que el resto de los dígitos no importan y y sólo trabajamos con los del mencionado 
+        como en el último arreglo.  </p>
+            <div class="portada-image-wrapper">
+                <img src="ejemplo6.png" alt="">
+            </div>
+            <p>Nuevamente, se realiza counting sort en estos elementos y se acomodan en orden en el arreglo, donde se establecen cuántos elementos 
+                hay de cada número. </p>
+            <div class="portada-image-wrapper">
+                <img src="ejemplo7.png" alt="">
+            </div>
+            <p>De la misma forma, se vuelve a ordenar el arreglo en base a este nuevo arreglo correspondiente a los número de en medio como se 
+                muestra en el primer arreglo. Después, procedemos a trabajar únicamente con el dígito más significativo, que se muestra en negritas 
+                en el segundo arreglo, y aquello números que no cuentan con este tercer dígito se toman como cero. Finalmente, trabajamos únicamente 
+                con el arreglo mostrado al final. </p>
+            <div class="portada-image-wrapper">
+                <img src="ejemplo8.png" alt="">
+            </div>
+            <p>Por última vez, se realiza el algoritmo de counting sort en los primeros dígitos y el orden final queda como en la imagen
+                anterior.</p>
+            <div class="portada-image-wrapper">
+                <img src="ejemplo9.png" alt="">
+            </div>
+            <p>Finalmente, se ordena el arreglo y se termina de ejecutar radix porque ya no hay más dígitos; lo que significa que el arreglo 
+                a quedado ordenado correctamente como se muestra en la imagen de arriba.  </p>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+        <p id="one">Universidad Autonoma de Baja California</p>
+        <p id="one">Facultad de Ciencias Químicas e Ingeniería</p>
+        <p id="one">Ingeniería en Computación</p>
+        <p id="one">2021</p>
+        <p id="one">Rico López Tamara Illian</p>  
+    </footer>
+
+</body>
+</html>

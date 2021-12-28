@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>RadixSort</title>
+    <link href="estilosg.css" rel="stylesheet" type="text/css">
+    <link rel="icon" href="favicon.png">
+</head>
+<body>
+    <header>
+        <img src="logo0.png" alt="creative.logo" class="logo">
+        <navb>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </navb>
+    </header>
+
+    <section class="home-hero-simulacion">
+        <div class="container">
+            <h1 class="title-b">Simulación</h1>
+        </div>
+    </section>
+
+    <div class="info">
+          <div class="info-wrapper">
+              <h2><strong>Código</strong></h2>
+              <p>Para la implementación del algoritmo Radix Sort se utilizó Java, donde se implementó un código que incluye un menú con las 
+                  opciones de LSD radix sort y MSD radix sort; así como una opción para números enteros y otro para palabras. El programa es 
+                el siguiente: </p>
+            
+            <p><strong>radixSort</strong></p>
+            <section class="codigo">
+                <p>public class radixSort {
+                <br> &nbsp;&nbsp;&nbsp;&nbsp;public static void radixSort(int arreglo[]) { </br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int tam=arreglo.length;
+                <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int max = getMax(arreglo, tam);</br>
+                <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (int indice=1; max/indice>0; indice*=10)</br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;countingSort(arreglo, tam, indice);
+                <br> &nbsp;&nbsp;&nbsp;&nbsp;}</br>
+                <br> &nbsp;&nbsp;&nbsp;&nbsp;public static void countingSort(int arreglo[], int tam, int indice) {</br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int[] cuenta=new int[10];
+                <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (int valor:arreglo)</br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cuenta[(valor/indice)%10]++;
+                <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (int i=1; i &lt 10; i++)</br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cuenta[i]+=cuenta[i-1];
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int[] output = new int[tam];</br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (int i=tam-1; i >= 0; i--) {
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;output[cuenta[(arreglo[i]/indice)%10]-1]=arreglo[i];</br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cuenta[(arreglo[i]/indice) % 10]--;
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</br>
+                <span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (int i=0; i &lt tam ; i++)</span>
+                <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;arreglo[i] = output[i]; </br>
+                &nbsp;&nbsp;&nbsp;&nbsp;}
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;public static int getMax(int arreglo[], int tam) {</br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int max=arreglo[0];
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (int i=1; i &lt tam ; i++) {</br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (arreglo[i]>max)
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;max = arreglo[i];</br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}	
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;return max; </br>
+                }</p>
+            </section>
+
+            <p><strong>msdRadixSort</strong></p>
+            <section class="codigo"> 
+                <p>public class msdRadixSort {
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;public static void msdradixSort(String[] arreglo){ </br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int max = getMax(arreglo);
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;char menor='a', mayor='z';</br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(int i=max; i>=0; i--){ 
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;countingSort(arreglo, i, menor, mayor); </br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} 
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;} </br>
+                &nbsp;&nbsp;&nbsp;&nbsp;public static void countingSort(String[] arreglo, int indice, char menor, char mayor){ 
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int[] cuenta = new int[(mayor-menor)+2]; </br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String[] aux = new String[arreglo.length]; 
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Arrays.fill(cuenta,0);      </br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(int i=0; i &lt arreglo.length; i++){ 				
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int charIndice = (arreglo[i].length()-1 &lt indice) ? 0 : ((arreglo[i].charAt(indice)-menor)+1); </br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cuenta[charIndice]++; 
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} </br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(int i=1; i &lt cuenta.length; i++){ 
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cuenta[i]+=cuenta[i-1]; </br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}      
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(int i=arreglo.length-1; i>=0 ;i--){ </br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int charIndex = (arreglo[i].length()-1 &lt indice) ? 0 : (arreglo[i].charAt(indice) - menor)+1; 
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;aux[cuenta[charIndex]-1] = arreglo[i]; </br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cuenta[charIndex]--; 
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} </br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(int i=0; i &lt aux.length; i++){ 
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;arreglo[i] = aux[i];    </br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} 
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;}     </br>
+                &nbsp;&nbsp;&nbsp;&nbsp;public static int getMax(String[] arreglo) {
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int maxIndice = 0; </br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(int i=0; i &lt arreglo.length; i++){ 
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(arreglo[i].length()-1>maxIndice){ </br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;maxIndice = arreglo[i].length()-1; 
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} </br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return maxIndice;</br>
+                &nbsp;&nbsp;&nbsp;&nbsp;}
+                <br>}</br> </p>
+            </section> 
+
+            <h2><strong>Simulación</strong></h2>
+            <p>En las siguientes imágenes se muestra como funciona el programa una vez que se ejecuta</p>
+            <div class="portada-image-wrapper">
+                <img src="ej1.png" alt="">
+            </div>
+            <p>En la imagen anterior, se muestra el menú principal del programa donde estan las opciones: LSD radix sort, MSD radix sirt y salir. 
+                Igualmente, en la imgen se muestra que se escogió la opción 1.</p>
+            <div class="portada-image-wrapper">
+                <img src="ej2.png" alt="">
+            </div>
+            <p>En la segunda imagen, se muestra el menú segundario de la sección LSD radis sort, donde se muestran las opciones: arreglo definido, 
+                arreglo dinámico y salir. En esta ocasión, se seleccionó la opción 1.</p>
+            <div class="portada-image-wrapper">
+                <img src="ej3.png" alt="">
+            </div>
+            <p>En esta imagen se muestran los resultados de la primera opción, donde se observan tres arreglos a los que se les aplica el método
+                de radix sort, con el fin de demostrar la ejecución para el mejor caso, el peor caso, y un arreglo cualquiera.</p>
+            <div class="portada-image-wrapper">
+                <img src="ej4.png" alt="">
+            </div>
+            <p>En la imagen se muestra de nuesvo el menú de lsd radix sort y se selecciona la opción salir, por lo que se muestra el menú principal
+                y ahora se elige la opción 2, que el msd radix sort.</p>
+            <div class="portada-image-wrapper">
+                <img src="ej5.png" alt="">
+            </div>
+            <p>En este caso, se despliega el menú de msd radx sort, donde se vuelven a mostrar las mismas opciones, que son: arreglo definido, 
+                arreglo dinámico y salir. En la imagen  se muestra que se seleccionó la opción 1, arreglo definido. 
+            </p>
+            <div class="portada-image-wrapper">
+                <img src="ej6.png" alt="">
+            </div>
+            <p>En la imagen anterior, se observan los resultados de la simulación ya que se muestran tres arreglos distintos a los que se les 
+                aplicó el método msd radix sort, con el fin de presentar el peor caso, el mejor caso y un caso cualquiera.</p>
+            <div class="portada-image-wrapper">
+                <img src="ej7.png" alt="">
+            </div>
+            <p>Finalmente, se selecciona la opción salir y se muestra el menú principal del programa y, por último, se selecciona la opción 
+                salir y se termina el programa. 
+            </p>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+        <p id="one">Universidad Autonoma de Baja California</p>
+        <p id="one">Facultad de Ciencias Químicas e Ingeniería</p>
+        <p id="one">Ingeniería en Computación</p>
+        <p id="one">2021</p>
+        <p id="one">Rico López Tamara Illian</p>  
+    </footer>
+
+</body>
+</html>

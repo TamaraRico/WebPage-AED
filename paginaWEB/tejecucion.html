@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>RadixSort</title>
+    <link href="estilosg.css" rel="stylesheet" type="text/css">
+    <link rel="icon" href="favicon.png">
+</head>
+<body>
+    <header>
+        <img src="logo0.png" alt="creative.logo" class="logo">
+        <navb>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <!--li><a href="">Contacto</a></li-->
+            </ul>
+        </navb>
+    </header>
+
+    <section class="home-hero-tiempo">
+        <div class="container">
+            <h1 class="title-b">Tiempo de ejecución</h1>
+        </div>
+    </section>
+
+    <div class="info">
+          <div class="info-wrapper">
+              <p>En comparación con otros algoritmos de ordenación, radix sort tiene un mejor tiempo de ejecución, ya que maneja una complejidad
+                   temporal de O(nk) mientras que métodos como merge sort o quicksort tienen un tiempo de ejecución de O(n log n) . Por otro lado,
+                    la complejidad O(nk) establece que n es el número total de elementos del arreglo a ordenar y k es la cantidad de dígitos del 
+                    número más grande de la matriz. Por ejemplo, si se esta trabajando con un radix de 3, es decir, 3 dígitos, entonces debe 
+                    ejecutar el método counting sort tres veces; lo mismo si se tiene un radix de cinco o de siete; lo que significa que el 
+                    comportamiento del algoritmo es cercano a linear.</p>
+
+                  <div class="portada-image-wrapper">
+                    <img src="complejidadTemporal.png" alt="">
+                  </div>
+
+            <p>El método de ordenamiento radix tiene una complejidad temporal de O(n+b) donde b es la base numérica. Si hay d dígitos en el 
+                elemento de mayor tamaño, la complejidad temporal de Radix Sort es O(k*(n + b)). Asimismo, los casos que pueden ocurrir en la 
+                ejecución del algoritmos presentan la siguiente complejidad:</p>
+                 
+            <p><strong>Peor caso</strong></p>
+            <p> [Big O]: O(kn)</p>
+            <p><strong>Mejor de los casos</strong></p>
+            <p>[Omega]: O(kn)</p>
+            <p><strong>Caso promedio</strong></p>
+            <p>[Theta]: O(kn)</p>
+            <p> </p>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+        <p id="one">Universidad Autonoma de Baja California</p>
+        <p id="one">Facultad de Ciencias Químicas e Ingeniería</p>
+        <p id="one">Ingeniería en Computación</p>
+        <p id="one">2021</p>
+        <p id="one">Rico López Tamara Illian</p>  
+    </footer>
+
+</body>
+</html>
